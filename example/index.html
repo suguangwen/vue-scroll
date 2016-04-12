@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vue-infinite-scroll</title>
+</head>
+<body>
+<div class="app" v-infinite-scroll="loadMore()" infinite-scroll-foot="500">
+  <div v-for="list in a">
+    
+  </div>
+</div>
+<script src="https://cdn.css.net/libs/vue/1.0.10/vue.min.js"></script>
+<script src="../src/vue-rolling.js"></script>
+<script>
+  var app = document.querySelector('.app')
+  new Vue({
+    el: 'body',
+    data: function () {
+      return {busy: false, a: [], b: []}
+    },
+    methods: {
+      loadMore: function () {
+        //当滚动条距离底部高度等于你在infinite-scroll-foot设置的高度时将运行一次此函数
+        //if scrollTop = infinite-scroll-foot , function run.
+        // this.busy = true
+
+        // for (var i = this.a.length; i < this.b.length; i++) {
+        //   this.a.push(this.b[i])
+        //   if (i % 6 === 5) {
+        //     break
+        //   }
+        // }
+        // this.busy = false
+      }
+    },
+    ready: function () {
+      //无限滚动翻页实例（请按照自己的需要去修改）
+      //infinite-scroll the instance.
+      // $.ajax({
+      //     url: '#',
+      //     type: 'get',
+      //     success: function (res) {
+      //       if (res.status === 200) {
+      //         // 初始化数据 先获取所有数据并初始化前６条
+      //         //Initialize the data,get 0-6 data of the array.
+      //         this.$set('b', res.data)
+      //         for (var i = 0; i < 6; i++) {
+      //           this.a.push(this.b[i])
+      //         }
+      //       }
+      //     }
+      //   })
+    }
+  })
+</script>
+</body>
+</html>
