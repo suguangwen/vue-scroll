@@ -26,13 +26,12 @@ Use v-infinite-scroll to enable the infinite scroll, and use infinite-scroll-* a
   new Vue({
     el: 'body',
     data: function () {
-      return {busy: false, a: [], b: []}
+      return {a: [], b: []}
     },
     methods: {
       loadMore: function () {
          //当滚动条距离底部高度等于你在infinite-scroll-foot设置的高度时将运行一次此函数
          //if scrollTop = infinite-scroll-foot , function run.
-        this.busy = true
 
         for (var i = this.a.length; i < this.b.length; i++) {
           this.a.push(this.b[i])
@@ -40,7 +39,6 @@ Use v-infinite-scroll to enable the infinite scroll, and use infinite-scroll-* a
             break
           }
         }
-        this.busy = false
       }
     },
     ready: function () {
