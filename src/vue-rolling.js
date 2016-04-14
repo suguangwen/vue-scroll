@@ -77,6 +77,8 @@
     return false
   }
 
+
+
   var infiniteScroll = {
     doBind: function doBind () {
       if (this.binded) return // eslint-disable-line
@@ -99,7 +101,7 @@
       }
       directive.viewportFoot = viewportFoot
 
-      var viewportWaterfallExpr = element.getAttribute('infinite-scroll-waterfall')
+      var viewportWaterfallExpr = element.getAttribute('infinite-waterfall')
       var Waterfall = false
       if (viewportWaterfallExpr) {
         Waterfall = Boolean(directive.vm.$get(viewportWaterfallExpr))
@@ -122,7 +124,7 @@
     doCheck: function doCheck (force) {
       var scrollEventTarget = this.scrollEventTarget
       var element = this.el
-      var viewportFoot = this.viewportFoot
+      var viewportFoot = .viewportFoot
       var viewportWaterfall = this.Waterfall
       if (force !== true && this.disabled) return //eslint-disable-line
       var shouldTrigger = false
