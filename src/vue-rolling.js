@@ -36,11 +36,7 @@
     }
   }
 
-  var getScrollTop = function getScrollTop () {
-    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-    return scrollTop
-  }
-
+  var getScrollTop = document.documentElement.scrollTop || document.body.scrollTop
   var getComputedStyle = document.defaultView.getComputedStyle
 
   var getScrollEventTarget = function getScrollEventTarget (element) {
@@ -77,8 +73,6 @@
     return false
   }
 
-
-
   var infiniteScroll = {
     doBind: function doBind () {
       if (this.binded) return // eslint-disable-line
@@ -91,6 +85,16 @@
       directive.scrollListener = throttle(directive.doCheck.bind(directive), 200)
       directive.scrollEventTarget.addEventListener('scroll', directive.scrollListener)
 
+      var viewportTopExpr = element.getAttribute('infinite-scroll-top')
+      var viewportTop = 0
+      if (viewportTopExpr) {
+        viewportTop = Number(directive.vm.$get(viewportTopExpr))
+        if (isNaN(viewportTop)) {
+          viewportTop = 0
+        }
+      }
+      directive.viewportTop = viewportTop
+
       var viewportFootExpr = element.getAttribute('infinite-scroll-foot')
       var viewportFoot = 0
       if (viewportFootExpr) {
@@ -101,13 +105,8 @@
       }
       directive.viewportFoot = viewportFoot
 
-      var viewportWaterfallExpr = element.getAttribute('infinite-waterfall')
-      var Waterfall = false
-      if (viewportWaterfallExpr) {
-        Waterfall = Boolean(directive.vm.$get(viewportWaterfallExpr))
-      }
-      directive.Waterfall = Waterfall
-
+      var viewportUpExpr = element.getAttribute('infinite-scroll-up')
+      directive.viewportUpExpr = viewportUpExpr
       var immediateCheckExpr = element.getAttribute('infinite-scroll-immediate-check')
       var immediateCheck = true
       if (immediateCheckExpr) {
@@ -124,21 +123,34 @@
     doCheck: function doCheck (force) {
       var scrollEventTarget = this.scrollEventTarget
       var element = this.el
-      var viewportFoot = .viewportFoot
-      var viewportWaterfall = this.Waterfall
+      var viewportFoot = this.viewportFoot
+      var viewportTop = this.viewportTop
       if (force !== true && this.disabled) return //eslint-disable-line
-      var shouldTrigger = false
-      if (scrollEventTarget === element) {
-        shouldTrigger = getVisibleHeight() + getScrollTop() + viewportFoot <= getScrollHeight()
+      var downTrigger = false
+      var Rolling = window.onscroll = function (direction) {
+        var scroll = document.documentElement.scrollTop || document.body.scrollTop
+        direction = false
+        if (scroll > getScrollTop) {
+          direction = false
+          getScrollTop = scroll
+          return direction
+        } else {
+          direction = true
+          getScrollTop = scroll
+          return direction
+        }
+      }
+      if (Rolling() && viewportTop > getScrollTop) {
+        this.vm.$get(this.viewportUpExpr)
       } else {
-        shouldTrigger = getVisibleHeight() + getScrollTop() + viewportFoot >= getScrollHeight()
+        if (scrollEventTarget === element) {
+          downTrigger = getVisibleHeight() + getScrollTop + viewportFoot <= getScrollHeight()
+        } else {
+          downTrigger = getVisibleHeight() + getScrollTop + viewportFoot >= getScrollHeight()
+        }
       }
-
-      if (shouldTrigger && this.expression) {
+      if (downTrigger && this.expression) {
         this.vm.$get(this.expression)
-      }
-
-      if(viewportWaterfall) {
       }
     },
 

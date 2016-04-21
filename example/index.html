@@ -5,7 +5,7 @@
   <title>vue-rolling</title>
 </head>
 <body>
-<div class="app" v-infinite-scroll="loadMore()" infinite-scroll-foot="500">
+<div class="app" v-infinite-scroll="down()" infinite-scroll-foot="500" infinite-scroll-top="200" infinite-scroll-up="up">
   <div v-for="list in a">
     {{list.name}}
   </div>
@@ -20,16 +20,13 @@
       return {a: [], b:[]}
     },
     methods: {
-      loadMore: function () {
+      down: function () {
         //当滚动条距离底部高度等于你在infinite-scroll-foot设置的高度时将运行一次此函数
         //if scrollTop = infinite-scroll-foot , function run.
-
-        // for (var i = this.a.length; i < this.b.length; i++) {
-        //   this.a.push(this.b[i])
-        //   if (i % 6 === 5) {
-        //     break
-        //   }
-        // }
+      }
+      up: function () {
+        //当滚动条距离底部高度等于你在infinite-scroll-top设置的高度时将运行一次此函数
+        //if scrollTop = infinite-scroll-top , function run.
       }
     },
     ready: function () {

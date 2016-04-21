@@ -16,29 +16,31 @@ Use v-infinite-scroll to enable the infinite scroll, and use infinite-scroll-* a
 使用v-infinite-scroll进行无限滚动翻页,使用 infinite-scroll- * 属性来定义它的选项。
 
 ```HTML
-<div v-infinite-scroll="loadMore()" infinite-scroll-foot="500">
+<div v-infinite-scroll="down()" infinite-scroll-foot="500" infinite-scroll-top="200" infinite-scroll-up="up">
 
 </div>
 ```
 
 ```JavaScript
-  var app = document.querySelector('.app')
   new Vue({
     el: 'body',
     data: function () {
       return {a: [], b: []}
     },
     methods: {
-      loadMore: function () {
+      down: function () {
          //当滚动条距离底部高度等于你在infinite-scroll-foot设置的高度时将运行一次此函数
          //if scrollTop = infinite-scroll-foot , function run.
-
         for (var i = this.a.length; i < this.b.length; i++) {
           this.a.push(this.b[i])
           if (i % 6 === 5) {
             break
           }
         }
+      },
+      up: function () {
+        //当滚动条距离底部高度等于你在infinite-scroll-top设置的高度时将运行一次此函数
+        //if scrollTop = infinite-scroll-top , function run.
       }
     },
     ready: function () {
@@ -67,6 +69,8 @@ Use v-infinite-scroll to enable the infinite scroll, and use infinite-scroll-* a
 | infinite-scroll/Option | Description |
 | ----- | ----- |
 | infinite-scroll-foot | 设定滚动条距离底部的高度．// Set the height of the scroll bar at the bottom of the distance. |
+| infinite-scroll-top | 设定滚动条距离顶部的距离度．// Set the height of the scroll bar at the top of the distance. |
+| infinite-scroll-up | 设定滚动条往上回滚时触发的函数．// When setting a scroll bar to rollback trigger function. |
 
 # License
 
