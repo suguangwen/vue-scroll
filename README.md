@@ -1,5 +1,5 @@
-# vue-rolling
-vue infinite scroll which can work.
+# vue-scroll
+vue scroll which can work.
 
 
 借鉴于ElemeFE/vue-infinite-scroll．
@@ -11,12 +11,12 @@ vue infinite scroll which can work.
 
 # 使用方法//Usage
 
-Use v-infinite-scroll to enable the infinite scroll, and use infinite-scroll-* attributes to define its options.
+Use v-scroll to enable the infinite scroll, and use scroll-* attributes to define its options.
 
-使用v-infinite-scroll进行无限滚动翻页,使用 infinite-scroll- * 属性来定义它的选项。
+使用v-scroll进行滚动翻页,使用 scroll- * 属性来定义它的选项。
 
 ```HTML
-<div v-infinite-scroll="down()" infinite-scroll-foot="500" infinite-scroll-top="200" infinite-scroll-up="up()">
+<div v-scroll="down()" scroll-foot="500" scroll-top="200" scroll-up="up()">
 
 </div>
 ```
@@ -29,8 +29,8 @@ Use v-infinite-scroll to enable the infinite scroll, and use infinite-scroll-* a
     },
     methods: {
       down: function () {
-         //当滚动条距离底部高度等于你在infinite-scroll-foot设置的高度时将运行一次此函数
-         //if scrollTop = infinite-scroll-foot , function run.
+         //当滚动条距离底部高度等于你在scroll-foot设置的高度时将运行一次此函数
+         //if scrollTop = scroll-foot , function run.
         for (var i = this.a.length; i < this.b.length; i++) {
           this.a.push(this.b[i])
           if (i % 6 === 5) {
@@ -39,13 +39,13 @@ Use v-infinite-scroll to enable the infinite scroll, and use infinite-scroll-* a
         }
       },
       up: function () {
-        //当滚动条距离底部高度等于你在infinite-scroll-top设置的高度时将运行一次此函数
-        //if scrollTop = infinite-scroll-top , function run.
+        //当滚动条距离底部高度等于你在scroll-top设置的高度时将运行一次此函数
+        //if scrollTop = scroll-top , function run.
       }
     },
     ready: function () {
-      //无限滚动翻页实例（请按照自己的需要去修改）
-      //infinite-scroll the instance.
+      //滚动翻页实例（请按照自己的需要去修改）
+      //scroll the instance.
       $.ajax({
           url: '#',
           type: 'get',
@@ -66,11 +66,11 @@ Use v-infinite-scroll to enable the infinite scroll, and use infinite-scroll-* a
 
 # 选项//Options
 
-| infinite-scroll/Option | Description |
+| scroll/Option | Description |
 | ----- | ----- |
-| infinite-scroll-foot | 设定滚动条距离底部的高度．// Set the height of the scroll bar at the bottom of the distance. |
-| infinite-scroll-top | 设定滚动条距离顶部的距离．// Set the height of the scroll bar at the top of the distance. |
-| infinite-scroll-up | 设定滚动条往上回滚时触发的函数．// When setting a scroll bar to rollback trigger function. |
+| scroll-foot | 设定滚动条距离底部的高度．// Set the height of the scroll bar at the bottom of the distance. |
+| scroll-top | 设定滚动条距离顶部的距离．// Set the height of the scroll bar at the top of the distance. |
+| scroll-up | 设定滚动条往上回滚时触发的函数．// When setting a scroll bar to rollback trigger function. |
 
 # License
 

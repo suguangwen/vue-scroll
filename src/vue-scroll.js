@@ -1,5 +1,5 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) : (factory((global.infiniteScroll = global.infiniteScroll || {})))
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) : (factory((global.Scroll = global.Scroll || {})))
 }(this, function (exports) {
   'use strict'
   var throttle = function throttle (fn, delay) {
@@ -73,7 +73,7 @@
     return false
   }
 
-  var infiniteScroll = {
+  var Scroll = {
     doBind: function doBind () {
       if (this.binded) return // eslint-disable-line
       this.binded = true
@@ -85,7 +85,7 @@
       directive.scrollListener = throttle(directive.doCheck.bind(directive), 200)
       directive.scrollEventTarget.addEventListener('scroll', directive.scrollListener)
 
-      var viewportTopExpr = element.getAttribute('infinite-scroll-top')
+      var viewportTopExpr = element.getAttribute('scroll-top')
       var viewportTop = 0
       if (viewportTopExpr) {
         viewportTop = Number(directive.vm.$get(viewportTopExpr))
@@ -95,7 +95,7 @@
       }
       directive.viewportTop = viewportTop
 
-      var viewportFootExpr = element.getAttribute('infinite-scroll-foot')
+      var viewportFootExpr = element.getAttribute('scroll-foot')
       var viewportFoot = 0
       if (viewportFootExpr) {
         viewportFoot = Number(directive.vm.$get(viewportFootExpr))
@@ -105,9 +105,9 @@
       }
       directive.viewportFoot = viewportFoot
 
-      var viewportUpExpr = element.getAttribute('infinite-scroll-up')
+      var viewportUpExpr = element.getAttribute('scroll-up')
       directive.viewportUpExpr = viewportUpExpr
-      var immediateCheckExpr = element.getAttribute('infinite-scroll-immediate-check')
+      var immediateCheckExpr = element.getAttribute('scroll-immediate-check')
       var immediateCheck = true
       if (immediateCheckExpr) {
         immediateCheck = Boolean(directive.vm.$get(immediateCheckExpr))
@@ -185,15 +185,15 @@
   }
 
   if (window.Vue) {
-    window.infiniteScroll = infiniteScroll
+    window.Scroll = Scroll
     Vue.use(install)
   }
 
   function install (Vue) {
-    Vue.directive('infiniteScroll', infiniteScroll)
+    Vue.directive('Scroll', Scroll)
   }
 
   exports.install = install
-  exports.infiniteScroll = infiniteScroll
+  exports.Scroll = Scroll
 
 }))
