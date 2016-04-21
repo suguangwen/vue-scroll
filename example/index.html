@@ -5,7 +5,7 @@
   <title>vue-rolling</title>
 </head>
 <body>
-<div class="app" v-infinite-scroll="down()" infinite-scroll-foot="500" infinite-scroll-top="200" infinite-scroll-up="up">
+<div class="app" v-infinite-scroll="down()" infinite-scroll-foot="500" infinite-scroll-top="200" infinite-scroll-up="up()">
   <div v-for="list in a">
     {{list.name}}
   </div>
