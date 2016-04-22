@@ -107,14 +107,14 @@
 
       var viewportUpExpr = element.getAttribute('scroll-up')
       directive.viewportUpExpr = viewportUpExpr
-      var immediateCheckExpr = element.getAttribute('scroll-immediate-check')
-      var immediateCheck = true
-      if (immediateCheckExpr) {
-        immediateCheck = Boolean(directive.vm.$get(immediateCheckExpr))
+      var initializeExpr = element.getAttribute('scroll-initialize')
+      var initialize = false
+      if (initializeExpr) {
+        initialize = Boolean(directive.vm.$get(initializeExpr))
       }
-      directive.immediateCheck = immediateCheck
+      directive.initialize = initialize
 
-      if (immediateCheck) {
+      if (initialize) {
         directive.doCheck()
       }
 
