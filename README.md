@@ -68,10 +68,10 @@ Use v-scroll to enable the infinite scroll, and use scroll-* attributes to defin
 
 | scroll/Option | Description |
 | ----- | ----- |
-| scroll-foot | 设定滚动条距离底部的高度．// Set the height of the scroll bar at the bottom of the distance. |
-| scroll-top | 设定滚动条距离顶部的距离．// Set the height of the scroll bar at the top of the distance. |
+| scroll-foot | 数字(默认为０)：设定滚动条距离底部的高度．// Number(default = 0)：Set the height of the scroll bar at the bottom of the distance. |
+| scroll-top | 数字(默认为０)：设定滚动条距离顶部的距离．// Number(default = 0)：Set the height of the scroll bar at the top of the distance. |
 | scroll-up | 设定滚动条往上回滚时触发的函数．// When setting a scroll bar to rollback trigger function. |
-| scroll-initialize | 设定为true时将在页面加载完成后触发一次v-scroll设定的函数．// After completion of the page load when set to true will trigger a v-scroll set function. |
+| scroll-initialize | 布尔(默认为false)：设定为true时将在页面加载完成后触发一次v-scroll设定的函数．// Boolean(default = false)：After completion of the page load when set to true will trigger a v-scroll set function. |
 
 # License
 
