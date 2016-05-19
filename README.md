@@ -55,8 +55,8 @@ Use v-scroll to enable the infinite scroll, and use scroll-* attributes to defin
     },
     methods: {
       down: function () {
-         //当滚动条距离底部高度等于你在scroll-foot设置的高度时将运行一次此函数
-         //if scrollTop = scroll-foot , function run.
+         //当滚动条距离底部高度小于或等于你在scroll-foot设置的高度时将运行一次此函数
+         //if scrollFoot height <= scroll-foot , function run.
         for (var i = this.a.length; i < this.b.length; i++) {
           this.a.push(this.b[i])
           if (i % 6 === 5) {
@@ -65,8 +65,8 @@ Use v-scroll to enable the infinite scroll, and use scroll-* attributes to defin
         }
       },
       up: function () {
-        //当滚动条距离底部高度等于你在scroll-top设置的高度时将运行一次此函数
-        //if scrollTop = scroll-top , function run.
+        //当滚动条距离顶部高度小于或等于你在scroll-top设置的高度时将运行一次此函数
+        //if scrollTop height <= scroll-top , function run.
       }
     },
     ready: function () {

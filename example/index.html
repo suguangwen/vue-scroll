@@ -21,12 +21,12 @@
     },
     methods: {
       down: function () {
-        //当滚动条距离底部高度等于你在scroll-foot设置的高度时将运行一次此函数
-        //if scrollTop = scroll-foot , function run.
+        //当滚动条距离底部高度小于或等于你在scroll-foot设置的高度时将运行一次此函数
+        //if scrollFoot height <= scroll-foot , function run.
       },
       up: function () {
-        //当滚动条距离底部高度等于你在scroll-top设置的高度时将运行一次此函数
-        //if scrollTop = scroll-top , function run.
+        //当滚动条距离底部高度小于或等于你在scroll-top设置的高度时将运行一次此函数
+        //if scrollTop height <= scroll-top , function run.
       }
     },
     ready: function () {
