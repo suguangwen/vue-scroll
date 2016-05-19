@@ -15,21 +15,21 @@ vue scroll which can work.
 npm install vue_scroll --save
 ```
 
-##ES6
+###ES6
 
 ```JavaScript
 import vue_scroll from 'vue_scroll'
 Vue.use(vue_scroll)
 ```
 
-##CommonJS
+###CommonJS
 
 ```JavaScript
 var vue_scroll =  require('vue_scroll');
 Vue.use(vue_scroll)
 ```
 
-##直接引用//Direct include
+###直接引用//Direct include
 
 ```JavaScript
 <script src="../node_modules/vue_scroll/vue_scroll.js"></script>
