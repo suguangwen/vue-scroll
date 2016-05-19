@@ -9,6 +9,32 @@ vue scroll which can work.
 
 ＠TODO 增加环境与测试用例．
 
+# 安装//Install
+
+```npm
+npm install vue_scroll --save
+```
+
+##ES6
+
+```JavaScript
+import vue_scroll from 'vue_scroll'
+Vue.use(vue_scroll)
+```
+
+##CommonJS
+
+```JavaScript
+var vue_scroll =  require('vue_scroll');
+Vue.use(vue_scroll)
+```
+
+##直接引用//Direct include
+
+```JavaScript
+<script src="../node_modules/vue_scroll/vue_scroll.js"></script>
+```
+
 # 使用方法//Usage
 
 Use v-scroll to enable the infinite scroll, and use scroll-* attributes to define its options.
