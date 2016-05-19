@@ -1,0 +1,27 @@
+{
+  "name": "vue_scroll",
+  "version": "0.1.1",
+  "description": "vue scroll Turn the page",
+  "main": "src/vue-scroll.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suguangwen/vue-rolling.git"
+  },
+  "keywords": [
+    "vue",
+    "vue-scroll",
+    "vue-infinite-scroll"
+  ],
+  "author": "suguangwen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/suguangwen/vue-rolling/issues"
+  },
+  "homepage": "https://github.com/suguangwen/vue-rolling#readme"
+}
